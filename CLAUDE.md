@@ -24,7 +24,7 @@ There is no test framework configured.
 - `src/App.jsx` owns the `transactions` state (seeded with sample data) and the shared `categories` list, and composes three children:
   - `Summary.jsx`: computes and renders the income / expenses / balance cards from `transactions`.
   - `TransactionForm.jsx`: owns its own input state and calls `onAdd(transaction)` with a fully built transaction.
-  - `TransactionList.jsx`: owns the type/category filter state and renders the filtered table. There is no persistence; data resets on reload.
+  - `TransactionList.jsx`: owns the type/category filter state and renders the filtered table. Each row's Delete button asks for confirmation with `window.confirm`, then calls `onDelete(id)` from `App`. There is no persistence; data resets on reload.
 - Styles: `src/index.css` (global) and `src/App.css` (app classes such as `.summary-card`, `.income-amount`, `.expense-amount`).
 - A transaction has the shape `{ id, description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. Categories are a hard-coded array in `App.jsx`.
 - `amount` is a **number**. Form input is converted with `parseFloat` in `handleSubmit`, so keep it numeric anywhere new transactions are created, because the totals add amounts with `reduce`.
