@@ -21,7 +21,10 @@ There is no test framework configured.
 ## Architecture
 
 - React 19 + Vite 7, plain JavaScript/JSX (no TypeScript). Entry: `index.html` → `src/main.jsx` → `src/App.jsx` (rendered in `StrictMode`).
-- The entire app is a single component in `src/App.jsx`: seed transactions, the add-transaction form, summary totals (income / expenses / balance), and the filterable transaction table all live there, with state held in `useState` hooks. There is no persistence; data resets on reload.
+- `src/App.jsx` owns the `transactions` state (seeded with sample data) and the shared `categories` list, and composes three children:
+  - `Summary.jsx`: computes and renders the income / expenses / balance cards from `transactions`.
+  - `TransactionForm.jsx`: owns its own input state and calls `onAdd(transaction)` with a fully built transaction.
+  - `TransactionList.jsx`: owns the type/category filter state and renders the filtered table. There is no persistence; data resets on reload.
 - Styles: `src/index.css` (global) and `src/App.css` (app classes such as `.summary-card`, `.income-amount`, `.expense-amount`).
 - A transaction has the shape `{ id, description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. Categories are a hard-coded array in `App.jsx`.
 - `amount` is a **number**. Form input is converted with `parseFloat` in `handleSubmit`, so keep it numeric anywhere new transactions are created, because the totals add amounts with `reduce`.
