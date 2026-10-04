@@ -24,7 +24,7 @@ There is no test framework configured.
 - The entire app is a single component in `src/App.jsx`: seed transactions, the add-transaction form, summary totals (income / expenses / balance), and the filterable transaction table all live there, with state held in `useState` hooks. There is no persistence; data resets on reload.
 - Styles: `src/index.css` (global) and `src/App.css` (app classes such as `.summary-card`, `.income-amount`, `.expense-amount`).
 - A transaction has the shape `{ id, description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. Categories are a hard-coded array in `App.jsx`.
-- `amount` is stored as a **string** (both in the seed data and from the form input), while totals are computed with `reduce((sum, t) => sum + t.amount, 0)`. That concatenates strings instead of adding numbers, so keep it in mind when touching totals or amounts.
+- `amount` is a **number**. Form input is converted with `parseFloat` in `handleSubmit`, so keep it numeric anywhere new transactions are created, because the totals add amounts with `reduce`.
 
 ## Lint notes
 
