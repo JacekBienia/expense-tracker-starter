@@ -146,3 +146,92 @@ th {
   font-size: 12px;
   color: #333;
 }
+
+.spending-chart {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #fff;
+}
+
+.spending-chart h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.chart-empty {
+  color: #888;
+  font-size: 14px;
+}
+
+.chart-tooltip {
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.chart-tooltip-label {
+  color: #52514e;
+  text-transform: capitalize;
+}
+
+.chart-tooltip-value {
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.spending-chart-body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.spending-chart-pie {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.chart-legend {
+  flex: 1 1 220px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.chart-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.chart-legend-label {
+  flex: 1;
+  color: #52514e;
+  text-transform: capitalize;
+}
+
+.chart-legend-value {
+  color: #0b0b0b;
+  font-weight: bold;
+}
+
+.chart-legend-share {
+  width: 40px;
+  text-align: right;
+  color: #888;
+}
