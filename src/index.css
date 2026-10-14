@@ -1,11 +1,63 @@
-* {
+:root {
+  --page: #f2f5f4;
+  --surface: #ffffff;
+  --surface-sunken: #f6f8f7;
+  --ink: #1b2b28;
+  --ink-soft: #5b6b67;
+  --ink-faint: #85928f;
+  --line: #dce3e1;
+  --kept: #1f6f5c;
+  --kept-strong: #185a4a;
+  --spent: #a23b5c;
+
+  --radius-panel: 16px;
+  --radius-control: 8px;
+
+  font-family: "Schibsted Grotesk", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  background: var(--page);
+  color: var(--ink);
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--kept);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }

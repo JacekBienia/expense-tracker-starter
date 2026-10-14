@@ -1,9 +1,8 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer } from 'recharts';
+import { formatCurrency } from './format';
 
 // Fixed categorical order: a category keeps its color no matter which others are present.
 const PALETTE = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#4a3aa7", "#e34948"];
-
-const formatCurrency = (value) => `$${value.toLocaleString()}`;
 
 function SpendingTooltip({ active, payload }) {
   if (!active || !payload?.length) return null;
@@ -36,14 +35,14 @@ function SpendingChart({ transactions, categories }) {
     }));
 
   return (
-    <div className="spending-chart">
-      <h2>Spending by Category</h2>
+    <section className="panel spending-chart" aria-labelledby="spending-heading">
+      <h2 id="spending-heading">Spending by category</h2>
       {data.length === 0 ? (
         <p className="chart-empty">No expenses yet.</p>
       ) : (
         <div className="spending-chart-body">
           <div className="spending-chart-pie">
-            <ResponsiveContainer width="100%" height={240}>
+            <ResponsiveContainer width="100%" height={200}>
               <PieChart accessibilityLayer>
                 <Pie
                   data={data}
@@ -72,7 +71,7 @@ function SpendingChart({ transactions, categories }) {
           </ul>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

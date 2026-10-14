@@ -29,13 +29,19 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Finance Tracker</h1>
-      <p className="subtitle">Track your income and expenses</p>
+      <header className="masthead">
+        <h1>Finance tracker</h1>
+      </header>
 
       <Summary transactions={transactions} />
-      <SpendingChart transactions={transactions} categories={categories} />
-      <TransactionForm categories={categories} onAdd={handleAdd} />
-      <TransactionList transactions={transactions} categories={categories} onDelete={handleDelete} />
+
+      <div className="workspace">
+        <div className="sidebar">
+          <TransactionForm categories={categories} onAdd={handleAdd} />
+          <SpendingChart transactions={transactions} categories={categories} />
+        </div>
+        <TransactionList transactions={transactions} categories={categories} onDelete={handleDelete} />
+      </div>
     </div>
   );
 }
